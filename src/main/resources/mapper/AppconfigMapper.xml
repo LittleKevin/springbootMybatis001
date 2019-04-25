@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kevin.mybatis_demo.dao.AppconfigDao">
+    <sql id="AppConfig_TABLE">
+     app_config
+    </sql>
+    <sql id="AppConfig_COLUMN">
+           appName,Version
+    </sql>
+    <select id="getAppConfig" resultType="com.kevin.mybatis_demo.model.Appconfig">
+        SELECT
+        <include refid="AppConfig_COLUMN"/>
+        FROM
+        <include refid="AppConfig_TABLE"/>
+    </select>
+</mapper>

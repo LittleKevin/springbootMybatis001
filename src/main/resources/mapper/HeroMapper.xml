@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kevin.mybatis_demo.dao.HeroDao">
+    <sql id="BASE_TABLE">
+     t_hero
+        </sql>
+    <sql id="BASE_COLUMN">
+     heroId,hero,skin_name,description,loc
+    </sql>
+    <insert id="insert" parameterType="com.kevin.mybatis_demo.model.Hero">
+        INSERT INTO
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            hero,skin_name,description,
+            <if test="loc != null">
+                loc,
+            </if>
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            #{hero, jdbcType=VARCHAR},#{skin_name, jdbcType=VARCHAR},#{description, jdbcType=VARCHAR},
+            <if test="loc != null">
+                #{loc, jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="selectHeroes" resultType="com.kevin.mybatis_demo.model.Hero">
+        SELECT
+        <include refid="BASE_COLUMN"/>
+        FROM
+        <include refid="BASE_TABLE"/>
+    </select>
+    <update id="update" parameterType="com.kevin.mybatis_demo.model.Hero">
+           update t_hero set
+           hero=#{hero},
+           skin_name=#{skin_name},
+           description=#{description},
+           loc=#{loc}
+           where heroId=#{heroId}
+    </update>
+    <delete id="delete" parameterType="com.kevin.mybatis_demo.model.Hero">
+        delete from t_hero where heroId=#{heroId}
+    </delete>
+</mapper>

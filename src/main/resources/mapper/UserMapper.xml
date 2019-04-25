@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kevin.mybatis_demo.dao.UserDao">
+    <sql id="USER_TABLE">
+     app_user
+        </sql>
+    <sql id="USER_COLUMN">
+            no_id,account,user_name,password,status,role_name,mobile,dep_id,warehouse_id,warehouse_addr
+    </sql>
+    <select id="getUser" parameterType="com.kevin.mybatis_demo.model.User" resultType="com.kevin.mybatis_demo.model.User">
+        SELECT
+        <include refid="USER_COLUMN"/>
+        FROM
+        <include refid="USER_TABLE"/>
+       where account=#{account}
+        and password=#{password}
+    </select>
+</mapper>

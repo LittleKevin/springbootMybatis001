@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kevin.mybatis_demo.dao.MenuDao">
+    <sql id="MENU_TABLE">
+     menu
+    </sql>
+    <sql id="MENU_COLUMN">
+           menu_id,menu_name,menu_code,menu_status
+    </sql>
+    <select id="getMenuLists" resultType="com.kevin.mybatis_demo.model.Menu">
+        SELECT
+        <include refid="MENU_COLUMN"/>
+        FROM
+        <include refid="MENU_TABLE"/>
+    </select>
+</mapper>
