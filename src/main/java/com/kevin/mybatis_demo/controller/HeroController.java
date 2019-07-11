@@ -40,4 +40,9 @@ public class HeroController {
     public int deleteUser(Hero user){
         return heroService.deleteUser(user);
     }
+    @ResponseBody
+    @GetMapping("/updateDynamicTable")
+    public void updateDynamicTable(@RequestParam(name="tableName")String tableName,@RequestParam(name="hero")String hero,@RequestParam(name="heroId")String heroId){
+        heroService.dynamicTable(tableName,hero,heroId);
+    }
 }

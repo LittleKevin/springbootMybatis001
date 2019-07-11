@@ -42,4 +42,11 @@ public class HeroServiceImp implements HeroService {
         PageInfo result = new PageInfo(heroes);
         return result;
     }
+
+    @Override
+    public void dynamicTable(String tableName, String hero, String heroId) {
+        hero ="'"+hero+"'";
+        heroId="'"+heroId+"'";
+        heroDao.dynamicTable(tableName,hero,heroId);
+    }
 }

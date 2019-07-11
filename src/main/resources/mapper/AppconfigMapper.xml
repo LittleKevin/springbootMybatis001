@@ -13,4 +13,7 @@
         FROM
         <include refid="AppConfig_TABLE"/>
     </select>
+    <select id="getExcelColumnsList" parameterType="java.lang.String" resultType="java.util.HashMap">
+      select * from app_user
+  </select>
 </mapper>

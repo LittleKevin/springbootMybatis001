@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,6 +63,11 @@ public class AppConfigController {
            System.out.println("companyName："+companyInfo.getCompanyName());
        }
         return "接收成功";
+    }
+
+    @GetMapping("/ExportExcel")
+    public void ExportExcel(HttpServletResponse response) throws Exception{
+        appconfigService.exportExcel(response);
     }
 
 }

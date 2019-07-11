@@ -40,4 +40,10 @@
     <delete id="delete" parameterType="com.kevin.mybatis_demo.model.Hero">
         delete from t_hero where heroId=#{heroId}
     </delete>
+
+    <update id="dynamicTable" statementType="STATEMENT">
+        update ${tableName}
+        set hero=${hero}
+        where heroId=${heroId}
+    </update>
 </mapper>
